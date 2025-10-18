@@ -1,0 +1,31 @@
+{% extends './layouts/main.njk' %}
+
+{% set pageType = "home" %}
+
+{% block content %}
+
+    <div class="mt-auto md:mt-0 bg-blue pb-8 sm:min-h-screen">
+
+        {% include 'template-parts/octopus.njk' %}
+
+        <div class="text-white mt-8 sm:-mt-8 xl:-mt-32 px-8 xl:px-32">
+
+            <p class="motion-safe:opacity-0 motion-safe:animate-slide-in-up text-3xl md:text-4xl xl:text-6xl font-bold font-serif" style="animation-delay: 500ms">Hello. I'm Josiah, <br/> and I make websites.</p>
+
+            <div class="flex flex-wrap gap-4 items-center motion-safe:opacity-0 motion-safe:animate-slide-in-left mt-6" style="animation-delay: 700ms">
+
+                <a href="/portfolio.html" class="w-full sm:w-auto min-w-3xs font-semibold text-center py-4 px-8 bg-light-green rounded text-dark-blue border-2 border-light-green">
+                    See My Work
+                </a>
+
+                <a href="/about.html" class="w-full sm:w-auto min-w-3xs font-semibold text-center py-4 px-8 rounded border-2">
+                    About Me
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

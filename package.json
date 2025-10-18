@@ -1,0 +1,20 @@
+{
+  "name": "portfolio-sea-themed",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.0.9",
+    "@vituum/vite-plugin-nunjucks": "^1.1.0",
+    "alpinejs": "^3.15.0",
+    "nunjucks": "^3.2.4",
+    "tailwindcss": "^4.0.9",
+    "vite": "^6.1.0"
+  }
+}

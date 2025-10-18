@@ -1,0 +1,19 @@
+{% extends './main.njk' %}
+
+{% block content %}
+
+    {% include 'template-parts/page-header.njk' %}
+
+    <div class="pt-4 md:pt-8 pb-16 px-4 md:px-8">
+        <div class="max-w-screen-lg mx-auto">
+
+            <div class="mt-8">
+
+                {% block mainContent %}{% endblock %}
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

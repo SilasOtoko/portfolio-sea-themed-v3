@@ -1,0 +1,122 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+    --color-mint-500: oklch(0.72 0.11 178);
+    --color-dark-blue: #032236;
+    --color-blue: #466372;
+    --color-blue-gray: #96a5aa;
+    --color-light-green: #80aa94;
+    --color-light-green-hover: #9abdab;
+    --color-blue-light: #e6ebee;
+    --font-sans: 'Quicksand', sans-serif;
+    --font-serif: 'Lora', serif;
+
+    --animate-turn: turn 1s ease-in-out 1;
+    --animate-turn-reverse: turnReverse 1s ease-in-out 1;
+    --animate-head-move: 9s headMove 2s infinite;
+    --animate-leg-swing-1: 8s legSwingOne 3s infinite;
+    --animate-leg-swing-3: 8s legMove 4s infinite;
+    --animate-slide-in-left: 1s slideInLeft forwards;
+    --animate-slide-in-up: 1s slideInUp forwards;
+
+    @keyframes turn {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(-360deg);
+        }
+    }
+
+    @keyframes turnReverse {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes legSwingOne {
+        0% {
+            transform: rotate(0deg);
+        }
+        25% {
+            transform: rotate(5deg);
+        }
+        50% {
+            transform: rotate(0);
+        }
+        75%{
+            transform: rotate(5deg);
+        }
+        100% {
+            transform: rotate(0);
+        }
+    }
+
+    @keyframes legMove {
+        0% {
+            transform: translateX(0) rotate(0);
+        }
+        25% {
+            transform: translateX(0) rotate(-1deg);
+        }
+        50% {
+            transform: translateX(-4px) rotate(0);
+        }
+        75% {
+            transform: translateX(0) rotate(-1deg);
+        }
+        100% {
+            transform: translateX(0) rotate(0);
+        }
+    }
+
+    @keyframes headMove {
+        0% {
+            transform: rotate(0);
+        }
+        25% {
+            transform: rotate(-5deg);
+        }
+        50% {
+            transform: rotate(0);
+        }
+        75%{
+            transform: rotate(-5deg);
+        }
+        100% {
+            transform: rotate(0);
+        }
+    }
+
+    @keyframes slideInLeft {
+        from {
+            transform: translate3d(-100%, 0, 0);
+            visibility: visible;
+            opacity: 0;
+        }
+
+        to {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideInUp {
+        from {
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+            opacity: 0;
+            visibility: visible;
+        }
+
+        to {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+    }
+}
