@@ -2,14 +2,21 @@ import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 import vituum from 'vituum'
 import nunjucks from '@vituum/vite-plugin-nunjucks'
-import path from 'path';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   build: {
     outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
-      input: path.resolve(__dirname, 'src/pages/index.njk'),
+      input: [
+        resolve(__dirname, 'src/pages/index.njk'),
+        resolve(__dirname, 'src/pages/about.njk'),
+        resolve(__dirname, 'src/pages/portfolio.njk'),
+      ]
     }
   },
   plugins: [

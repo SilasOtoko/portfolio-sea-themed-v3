@@ -16,7 +16,7 @@
             }"
             x-on:click="navOpen = !navOpen; triggered = true"
         >
-            {% include "../svgs/helm.svg" %}
+            <img src="/svgs/helm.svg" alt="" role="presentation" />
         </button>
 
     </div>
@@ -39,7 +39,7 @@
 
     <div
         class="md:hidden fixed bg-no-repeat overflow-y-scroll bg-cover w-full h-full z-10"
-        style="background-image: url('src/svgs/sail.svg');"
+        style="background-image: url('/svgs/sail.svg');"
         x-transition:enter="transition ease-in-out duration-1000"
         x-transition:enter-start="translate-x-full"
         x-transition:enter-end="translate-x-0"
