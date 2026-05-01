@@ -1,0 +1,171 @@
+{#
+  Case study layout for frontend developer narratives.
+  Pages extend this layout and provide the body via {% block caseStudyBody %}.
+
+  Expected variables (set in the page via {% set %}):
+    title       – Project name (string)
+    client      – Client name (string)
+    role        – Your role (string)
+    year        – Year shipped (number or string)
+    stack       – Tech stack tags (array of strings)
+    liveUrl     – URL of live site (string, optional)
+    images      – Array of {src, alt, caption?} objects. images[0] is used as the hero.
+    video       – {src, poster, alt} for projects with looping video (optional, e.g. HGC)
+#}
+
+{% extends './main.njk' %}
+
+{% set pageTitle = title %}
+
+{% block content %}
+
+  <article>
+
+    {# ── Header ── #}
+    <header>
+
+      <div class="bg-blue-gray-light pt-12 pb-6 px-8 md:pt-16 md:pb-8">
+
+        <div class="max-w-screen-lg mx-auto">
+
+          <p class="text-sm text-dark-blue/70 uppercase tracking-wider font-semibold">
+            {{ client }} · {{ year }}
+          </p>
+
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-dark-blue mt-2">
+            {{ title }}
+          </h1>
+
+        </div>
+
+      </div>
+
+      <div class="py-6 px-8 md:py-8">
+
+        <div class="max-w-screen-lg mx-auto">
+
+          <div class="flex flex-col md:flex-row md:flex-wrap gap-6 md:gap-12 md:items-end">
+
+            <div>
+              <p class="text-xs uppercase tracking-wider text-dark-blue font-semibold mb-1">Role</p>
+              <p class="text-base text-dark-blue">{{ role }}</p>
+            </div>
+
+            {% if stack %}
+            <div>
+              <p class="text-xs uppercase tracking-wider text-dark-blue font-semibold mb-2">Stack</p>
+              <ul class="flex flex-wrap gap-2">
+                {% for item in stack %}
+                  <li class="bg-blue-light text-dark-blue px-2.5 py-1 rounded text-sm font-medium">{{ item }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+
+            {% if liveUrl %}
+            <div class="md:ml-auto">
+              <a
+                href="{{ liveUrl }}"
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-2 text-dark-blue hover:text-blue underline decoration-2 underline-offset-4 transition-colors font-medium"
+              >
+                Visit live site
+                <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true">
+                  <path d="M384 64C366.3 64 352 78.3 352 96C352 113.7 366.3 128 384 128L466.7 128L265.3 329.4C252.8 341.9 252.8 362.2 265.3 374.7C277.8 387.2 298.1 387.2 310.6 374.7L512 173.3L512 256C512 273.7 526.3 288 544 288C561.7 288 576 273.7 576 256L576 96C576 78.3 561.7 64 544 64L384 64zM144 160C99.8 160 64 195.8 64 240L64 496C64 540.2 99.8 576 144 576L400 576C444.2 576 480 540.2 480 496L480 416C480 398.3 465.7 384 448 384C430.3 384 416 398.3 416 416L416 496C416 504.8 408.8 512 400 512L144 512C135.2 512 128 504.8 128 496L128 240C128 231.2 135.2 224 144 224L224 224C241.7 224 256 209.7 256 192C256 174.3 241.7 160 224 160L144 160z"/>
+                </svg>
+              </a>
+            </div>
+            {% endif %}
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </header>
+
+    {# ── Hero image ── #}
+    {% if images and images[0] %}
+      <div class="px-8 pb-12 md:pb-16 mt-8">
+        <div class="max-w-screen-lg mx-auto">
+          <img
+            src="{{ images[0].src }}"
+            alt="{{ images[0].alt }}"
+            class="w-full rounded-lg shadow-2xl"
+            loading="eager"
+          />
+        </div>
+      </div>
+    {% endif %}
+
+    {# ── Narrative body ── #}
+    <div class="py-16 px-8 -mt-8">
+      <div class="max-w-3xl mx-auto space-y-6 text-lg leading-relaxed text-dark-blue prose">
+        <h2 class="text-4xl font-serif">Project Description</h2>
+        {% block caseStudyBody %}{% endblock %}
+      </div>
+    </div>
+
+    {# ── Additional images (skip the first since it's already shown as hero) ── #}
+    {% if images and (images | length) > 1 %}
+      <div class="pb-16 px-8 bg-white">
+        <div class="max-w-screen-lg mx-auto space-y-12">
+          {% for image in images %}
+            {% if loop.index0 > 0 %}
+              <figure>
+                <img
+                  src="{{ image.src }}"
+                  alt="{{ image.alt }}"
+                  class="w-full rounded-lg shadow-lg"
+                  loading="lazy"
+                />
+                {% if image.caption %}
+                  <figcaption class="mt-3 text-sm text-blue text-center italic">{{ image.caption }}</figcaption>
+                {% endif %}
+              </figure>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {# ── Video (HGC) ── #}
+    {% if video %}
+      <div class="pb-16 px-8 bg-white">
+        <div class="max-w-screen-lg mx-auto">
+          <video
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="metadata"
+            {% if video.poster %}poster="{{ video.poster }}"{% endif %}
+            class="w-full rounded-lg shadow-lg"
+          >
+            <source src="{{ video.src }}" type="video/mp4">
+            <p>Your browser does not support the video tag.</p>
+          </video>
+          {% if video.alt %}
+            <p class="sr-only">{{ video.alt }}</p>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {# ── Back link ── #}
+    <div class="py-12 px-8 bg-blue-light">
+      <div class="max-w-screen-lg mx-auto">
+        <a
+          href="/portfolio.html"
+          class="inline-flex items-center gap-2 text-dark-blue hover:text-blue underline decoration-2 underline-offset-4 transition-colors font-medium"
+        >
+          ← Back to all work
+        </a>
+      </div>
+    </div>
+
+  </article>
+
+{% endblock %}

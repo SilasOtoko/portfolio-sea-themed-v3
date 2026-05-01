@@ -1,0 +1,49 @@
+{% extends './layouts/case-study.njk' %}
+
+{% set title = "Mindscape" %}
+{% set client = "Harvard Health Publishing" %}
+{% set role = "Sole Front-End Developer" %}
+{% set year = "2025" %}
+{% set stack = ["Laravel", "Tailwind", "Alpine"] %}
+{% set liveUrl = "https://www.health.harvard.edu/mindscape" %}
+
+{% set images = [
+  {
+    "src": "/img/mindscape.jpg",
+    "alt": "Mindscape mega menu open, showing the For Young People navigation with a featured article and sub-items"
+  },
+  {
+    "src": "/img/case-studies/mindscape-card-carousel.jpg",
+    "alt": "Mindscape card carousel"
+  }
+] %}
+
+{% block caseStudyBody %}
+
+  <p>Mindscape is a Harvard Health Publishing platform on adolescent mental health, made special through custom illustrations from a local artist. My job was to make the personality created by the designer and the illustrations come to life and bring a sense of calm and brightness to the user.</p>
+
+  <p>The site was built with Laravel, Tailwind, and Alpine. The design relied on soft tones and considered typography to make difficult content feel calm rather than clinical. Most of the frontend craft sat in the small details, mainly the interaction quality, type rhythm, how the pages breathed through the use of white space. This project contains many custom design touches that were challenging to pull together, and contained several of my own additions to enhance the experience.</p>
+
+  <p>There were a few UI/UX problems to solve with this site. First, the hero illustration was wide and at mobile sizes it would have shrunk to the point of losing the detail that made it worth using in the first place. We didn't want to crop the image either, so the designer suggested having the image run off the side of the page and be scrollable.</p>
+
+  <figure class="max-w-64 mx-auto my-8">
+    <img
+      src="/img/case-studies/mindscape-mobile-slider.png"
+      alt="Mindscape mobile view with the styled slider input below the wide custom illustration"
+      class="w-full rounded-lg shadow-lg"
+      loading="lazy"
+    />
+    {% if image.caption %}
+      <figcaption class="mt-3 text-sm text-blue text-center italic">{{ image.caption }}</figcaption>
+    {% endif %}
+  </figure>
+
+  <p>I proposed adding a styled slider input the user can grab and drag to scroll the illustration horizontally. It solved two problems in one move: it keeps the artwork legible at scale, and it signals that the image deliberately extends beyond the viewport.</p>
+
+  <h3 class="font-serif text-3xl">The Mega Menu</h3>
+
+  <p>The mega menu was another challenge. The information architecture and the visual treatment had to land together, and getting there took a long stretch of back-and-forth with the designer. We had to figure out what to nest, what to surface, and how the menu would behave across breakpoints, while also catering to the opinions of the client. One piece of feedback in particular was concern that there was too much to view at once when the mega menu opened. I came up with the solution of animating the left column in first, as this contained the main pages, and the other columns a moment after. This reflected the heriarchy of the pages and helped the user know where to look first. I also wanted to prioritize accessibility, so the mega menu can be fully controlled using the arrow keys.</p>
+
+  <p>Another challenge was the card carousels on the site, which was built from scratch using Alpine, Tailwind, and Intersection Observer. It was particularly difficult to line the cards up starting with space on the left to match the site's max-width container, while allowing the cards to still be viewable as they slid left. It also needed to have the cards overflow and be visible to the right as well. The carousel also reacted the screen size and would only show the controls when the cards would overflow the container, either on page load or by shrinking the screen. Getting everything lined up exactly as the designer wanted was also difficult, with padding, margins, and containers taken into account.</p>
+
+{% endblock %}

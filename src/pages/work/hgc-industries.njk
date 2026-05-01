@@ -1,0 +1,35 @@
+{% extends './layouts/case-study.njk' %}
+
+{% set title = "HGC Industries" %}
+{% set client = "HGC Industries" %}
+{% set role = "Front-End Developer" %}
+{% set year = "2022" %}
+{% set stack = ["WordPress", "Gutenberg", "CSS", "JavaScript", "SVG"] %}
+{% set liveUrl = "https://www.hgcindustries.com/" %}
+
+{% set images = [
+  {
+    "src": "/img/hgcindustries-home.jpg",
+    "alt": "HGC Industries home page featuring a metal gasket."
+  }
+] %}
+
+{% set video = {
+  "src": "/img/case-studies/hgc-animation.mp4",
+  "poster": "/img/hgcindustries-world-map.jpg",
+  "alt": "Animation of the spine line and secondary section animations as the user scrolls"
+} %}
+
+{% block caseStudyBody %}
+
+  <p>HGC Industries' new site hinged on a specific vision from the designer, mainly a single line animation drawn down the left edge of the page that would unspool as the user scrolled, with secondary animations appearing to spring from it as related sections came into view. The line was the visual spine of the site, and the rest of the animations extended from it. As sole developer on the project, I owned both the build and the animation choreography.</p>
+
+  <h3 class="font-serif text-3xl">The animation system</h3>
+
+  <p>The piece of work I'm most proud of is the animation system itself. Each section's reveal had to feel related to the spine line below it as if it were growing out of the same animation. The motion needed to read as one organism, not a sequence of detached effects.</p>
+
+  <h3 class="font-serif text-3xl">Under the hood</h3>
+
+  <p>The system was a combination of CSS, JavaScript using the Intersection Observer API, and inline SVGs. The animations that came from the main line were SVGs whose stroke paths animated. CSS handled the timing and easing and the Intersection Observer triggered each section's animation when the relevant region entered the viewport, so the work only ran when it was needed. The hardest part was getting the main line to draw, starting horizontally at first and then changing direction to go vertically down. I couldn't use an SVG since this didn't scale well, so I had to come up with a combination of techniques to give the impression of a single line drawing action. It was also complicated by the page being of variable size, so the animation draw speed had to account for this as well.</p>
+
+{% endblock %}

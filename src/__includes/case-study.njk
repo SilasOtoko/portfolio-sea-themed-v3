@@ -1,0 +1,186 @@
+---
+layout: base.njk
+---
+
+{#
+  USAGE
+  ─────
+  Create one Markdown or Nunjucks file per case study inside e.g. src/work/<slug>.njk
+  Set front matter like this:
+
+    ---
+    layout: case-study.njk        ← this template
+    title: Harbor — crew scheduling redesign
+    category: Mobile app
+    year: 2024
+    role: Lead UX designer
+    timeline: 14 weeks
+    impact: "↓ 40% booking errors"
+    heroGrad: "from-[#042C53] via-[#185FA5] to-[#1D9E75]"
+    emoji: "⚓"
+    skills:
+      - User research
+      - Figma prototyping
+      - Usability testing
+      - Dev handoff
+    process:
+      - Discovery
+      - Define
+      - Design
+      - Test
+      - Ship
+    problem: >
+      Port supervisors were managing 200+ crew shifts via a fragmented mix of
+      spreadsheets and SMS. Scheduling conflicts caused costly last-minute
+      scrambles and compliance failures.
+    approach: >
+      We ran 12 contextual interviews dockside, mapped a service blueprint of the
+      existing flow, and ran two rounds of moderated usability testing on prototypes
+      before shipping.
+    outcome: >
+      The redesigned scheduling app reduced booking errors by 40% in the first
+      quarter post-launch and cut average task completion time from 8 minutes
+      to under 3.
+    ---
+
+  The page body (below the front matter) becomes {{ content | safe }} — use it
+  for longer narrative sections, embedded images, blockquotes, etc.
+#}
+
+<article class="min-h-screen">
+
+  {# ── Hero banner ── #}
+  <header class="relative flex h-64 items-end overflow-hidden bg-gradient-to-br {{ heroGrad }} px-8 pb-8 md:h-80 md:px-16">
+    {# Layered wave decoration #}
+    <svg
+      class="pointer-events-none absolute bottom-0 left-0 w-full opacity-[0.15]"
+      viewBox="0 0 800 120"
+      preserveAspectRatio="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M0,60 C120,20 240,100 400,60 C560,20 680,90 800,55 L800,120 L0,120Z" fill="white"/>
+      <path d="M0,85 C150,55 280,105 450,75 C600,50 720,95 800,70 L800,120 L0,120Z" fill="white" opacity="0.5"/>
+    </svg>
+
+    {# Category + year badge #}
+    <span class="absolute right-8 top-6 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium text-blue-100 backdrop-blur-sm md:right-16">
+      {{ category }} · {{ year }}
+    </span>
+
+    <div class="relative z-10">
+      <p class="mb-2 text-3xl" aria-hidden="true">{{ emoji }}</p>
+      <h1 class="max-w-2xl font-serif text-3xl font-semibold leading-tight text-blue-50 md:text-4xl">
+        {{ title }}
+      </h1>
+    </div>
+  </header>
+
+  {# ── Body ── #}
+  <div class="mx-auto max-w-4xl px-6 py-14 md:px-12">
+
+    {# Quick-scan stats row #}
+    <div class="mb-12 grid grid-cols-3 gap-4 sm:grid-cols-3">
+      <div class="rounded-xl bg-slate-50 px-4 py-4">
+        <p class="mb-1 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Role</p>
+        <p class="text-sm font-medium text-slate-800">{{ role }}</p>
+      </div>
+      <div class="rounded-xl bg-slate-50 px-4 py-4">
+        <p class="mb-1 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Timeline</p>
+        <p class="text-sm font-medium text-slate-800">{{ timeline }}</p>
+      </div>
+      <div class="rounded-xl bg-slate-50 px-4 py-4">
+        <p class="mb-1 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Impact</p>
+        <p class="text-sm font-medium text-blue-700">{{ impact }}</p>
+      </div>
+    </div>
+
+    {# Two-column layout: main narrative + sidebar #}
+    <div class="grid gap-12 md:grid-cols-[1fr_220px]">
+
+      {# ── Left: narrative ── #}
+      <div class="space-y-10">
+
+        {# Problem #}
+        <section>
+          <h2 class="mb-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400">The problem</h2>
+          <p class="text-base leading-relaxed text-slate-600">{{ problem }}</p>
+        </section>
+
+        {# Approach #}
+        {% if approach %}
+        <section>
+          <h2 class="mb-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Approach</h2>
+          <p class="text-base leading-relaxed text-slate-600">{{ approach }}</p>
+        </section>
+        {% endif %}
+
+        {# Process steps #}
+        {% if process %}
+        <section>
+          <h2 class="mb-4 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Process</h2>
+          <ol class="flex flex-wrap items-center gap-2">
+            {% for step in process %}
+            <li class="flex items-center gap-2">
+              <span class="flex h-7 w-7 items-center justify-center rounded-full border border-blue-200 bg-blue-50 text-xs font-semibold text-blue-800">
+                {{ loop.index }}
+              </span>
+              <span class="text-sm text-slate-700">{{ step }}</span>
+              {% if not loop.last %}
+              <span class="text-slate-300" aria-hidden="true">—</span>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ol>
+        </section>
+        {% endif %}
+
+        {# Outcome #}
+        {% if outcome %}
+        <section>
+          <h2 class="mb-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Outcome</h2>
+          <p class="text-base leading-relaxed text-slate-600">{{ outcome }}</p>
+        </section>
+        {% endif %}
+
+        {# ── Long-form content from page body (images, quotes, extra sections) ── #}
+        {% if content %}
+        <div class="prose prose-slate prose-img:rounded-xl prose-img:border prose-img:border-slate-200 max-w-none">
+          {{ content | safe }}
+        </div>
+        {% endif %}
+
+      </div>
+
+      {# ── Right: sidebar ── #}
+      <aside class="space-y-8">
+
+        {# Skills used #}
+        {% if skills %}
+        <div>
+          <h2 class="mb-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Skills used</h2>
+          <ul class="space-y-2">
+            {% for skill in skills %}
+            <li class="rounded-lg bg-slate-50 px-3 py-2 text-sm text-slate-600">
+              {{ skill }}
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+      </aside>
+    </div>
+
+    {# ── Back link ── #}
+    <div class="mt-16 border-t border-slate-100 pt-10">
+      <a
+        href="/work"
+        class="inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition-colors hover:text-blue-700"
+      >
+        ← Back to all work
+      </a>
+    </div>
+
+  </div>
+</article>

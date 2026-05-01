@@ -1,0 +1,70 @@
+{% set projects = [
+    {
+        "title": "Mindscape",
+        "client": "Harvard Health Publishing",
+        "role": "Sole Front-End Developer",
+        "year": "2025",
+        "link": "/work/mindscape.html",
+        "image": "/img/case-studies/mindscape-mega-menu.png",
+        "alt": "Mindscape platform — Harvard Health Publishing"
+    },
+    {
+        "title": "Harvard Health Publishing",
+        "client": "Harvard Health Publishing",
+        "role": "Main Front-End Developer",
+        "year": "2020",
+        "link": "/work/harvard-health-publishing.html",
+        "image": "/img/case-studies/hhp-bundle-purchase.png",
+        "alt": "Harvard Health Publishing"
+    },
+    {
+        "title": "Pedcor Companies",
+        "client": "Pedcor",
+        "role": "Sole Front-End Developer",
+        "year": "2020",
+        "link": "/work/pedcor-companies.html",
+        "image": "/img/case-studies/pedcor-frontend-1.png",
+        "alt": "Pedcor Companies"
+    },
+    {
+        "title": "HGC Industries",
+        "client": "HGC Industries",
+        "role": "Sole Front-End Developer",
+        "year": "2022",
+        "link": "/work/hgc-industries.html",
+        "image": "/img/hgcindustries-world-map.jpg",
+        "alt": "HGC Industries"
+    }
+] %}
+
+<p class="text-lg text-dark-blue mb-12 max-w-2xl leading-relaxed">
+    Selected case studies from my recent frontend work. Production sites, real clients, with the design choices and technical details that made each one its own thing.
+</p>
+
+<ul class="grid gap-6 md:gap-8 sm:grid-cols-2">
+
+    {% for project in projects %}
+
+        <li>
+            <a
+                href="{{ project.link }}"
+                class="block group rounded-lg overflow-hidden bg-blue-light hover:shadow-xl focus:shadow-xl transition duration-300 border border-blue-gray-light outline-2 outline-transparent hover:outline-navy focus:outline-navy"
+            >
+                <div class="aspect-video bg-blue-gray overflow-hidden">
+                    <img
+                        src="{{ project.image }}"
+                        alt="{{ project.alt }}"
+                        class="w-full h-full object-cover group-hover:scale-110 group-focus:scale-110 transition-transform duration-200 backface-hidden"
+                        loading="lazy"
+                    />
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-serif font-semibold text-dark-blue group-hover:underline group-focus:underline group-hover:text-navy group-focus:text-navy decoration-2 underline-offset-2">{{ project.title }}</h3>
+                    <p class="text-sm text-blue mt-1">{{ project.client }} · {{ project.year }}</p>
+                </div>
+            </a>
+        </li>
+
+    {% endfor %}
+
+</ul>

@@ -9,7 +9,7 @@
     <div class="md:hidden absolute right-4 top-4 z-20">
 
         <button
-            class="h-30 w-30 md:h-40 md:w-40"
+            class="h-20 w-20 md:h-40 md:w-40"
             x-bind:class="{
                 'animate-turn' : navOpen,
                 'animate-turn-reverse' : !navOpen && triggered
@@ -25,9 +25,9 @@
 
         <ul
             {% if pageType === 'home' %}
-                class="flex gap-8 text-2xl text-blue-dark"
+                class="flex gap-8 text-xl text-blue-dark"
             {% else %}
-                class="flex gap-8 text-2xl text-white"
+                class="flex gap-8 text-xl text-white"
             {% endif %}
         >
 

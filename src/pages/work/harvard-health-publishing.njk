@@ -1,0 +1,71 @@
+{% extends './layouts/case-study.njk' %}
+
+{% set title = "Harvard Health Publishing" %}
+{% set client = "Harvard Health Publishing" %}
+{% set role = "Main Front-End Developer" %}
+{% set year = "2020" %}
+{% set stack = ["Laravel", "Tailwind", "Vue", "Alpine"] %}
+{% set liveUrl = "https://www.health.harvard.edu" %}
+
+{% set images = [
+  {
+    "src": "/img/hhp.jpg",
+    "alt": "Screenshot from Harvard's editorial publishing website"
+  }
+] %}
+
+{% block caseStudyBody %}
+
+  <p>Harvard Health Publishing is a publication site at editorial scale, with hundreds of articles, dozens of landing pages, and a designer working on the redesign who could not, reasonably, draw every screen. As the main Front-End developer on the 2020 redesign, my role was as much filling in the design where it didn't yet exist as it was implementing it.</p>
+
+  <p>I worked in Laravel, Tailwind, Vue, and Alpine.</p>
+
+  <h3 class="font-serif text-3xl">Templating consolidation</h3>
+
+  <p>The piece of work I'm most proud of came from a maintenance problem. The site had accumulated a sprawl of one-off landing pages with each having its own HTML and CSS, much of it duplicated. Every accessibility or responsive fix had to be made N times, in N slightly different ways. I rebuilt the system around roughly eighteen shared templates that covered the patterns the design actually needed, then trained the designer to spin up new landing pages by editing a PHP content object. This allowed him to put his content into structured fields instead of copying the previous page's markup and replacing the specific content. To make it navigable, I documented every template in a spreadsheet mapping templates to the pages that used them.</p>
+
+  <figure class="my-8">
+    <img
+      src="/img/case-studies/hhp-php-object.png"
+      alt="PHP content object for an Advanced Care Planning landing page, showing structured fields like pageTitle, heroText, heroImage, and block content"
+      class="w-full rounded-lg shadow-lg"
+      loading="lazy"
+    />
+    <figcaption class="mt-3 text-sm text-blue text-center italic">A landing page authored as a PHP content object — structured fields the designer could edit directly, no HTML required.</figcaption>
+  </figure>
+
+  <p>The result was that adding a new landing page went from a development task to a content task, and accessibility/responsive fixes only had to happen once. The designer was able to ship faster without my needing to update his code with modern HTML, responsiveness, and accessibility best practices each time he needed a new landing page.</p>
+
+  <h3 class="font-serif text-3xl">Bundle-purchase page</h3>
+
+  <p>Another substantial piece of work was a bundle-purchase page for the Special Health Reports — a new page type that let users select and combine multiple products in one transaction, which the site hadn't previously supported. The designer provided the initial static layout. I worked out the interaction details the design didn't yet describe: how product format selection should behave when a user changed their mind, how to make it obvious which format had been added to the cart, what should happen to the order form at the bottom of the page as items moved in and out, and how the tiered-discount display should react to cart contents. I owned the JavaScript for the full flow.</p>
+
+   <figure class="my-8">
+    <img
+      src="/img/case-studies/hhp-bundle-purchase.png"
+      alt="Special Health Reports bundle-purchase page with format selector and dynamic discount tier display showing two earned discounts"
+      class="w-full rounded-lg shadow-lg"
+      loading="lazy"
+    />
+    <figcaption class="mt-3 text-sm text-blue text-center italic">Special Health Reports bundle-purchase page showing a currently selected product where the actively selected format has changed.</figcaption>
+  </figure>
+
+  <h3 class="font-serif text-3xl">Accessibility</h3>
+
+  <p>The other thread I'm proud of is accessibility. I pushed for proper a11y on the build when the company wasn't yet treating it as a priority. When Harvard's accessibility requirements later ramped up, much of the groundwork was already done, which spared the team from having to make any significant changes in a rush.</p>
+
+  <h3 class="font-serif text-3xl">Testing</h3>
+
+  <p>HHP is also the first project where I introduced E2E testing using Cypress to test crucial parts of the site and ensure future updates didn't break any of those features. This was especially important with HHP being one of our only projects that had more than 2 developers making code updates frequently.</p>
+
+  <figure class="my-8">
+    <img
+      src="/img/case-studies/hhp-cypress-tests.png"
+      alt="Cypress test runner output showing 42 passing tests across accessibility, search, and other crucial features"
+      class="w-full rounded-lg shadow-lg"
+      loading="lazy"
+    />
+    <figcaption class="mt-3 text-sm text-blue text-center italic">Starting suite of tests with more planned for the future.</figcaption>
+  </figure>
+
+{% endblock %}

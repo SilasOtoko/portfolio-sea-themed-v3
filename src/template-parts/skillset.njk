@@ -1,0 +1,37 @@
+{% set skills = [
+  { "name": "JavaScript" },
+  { "name": "PHP" },
+  { "name": "Laravel" },
+  { "name": "AlpineJS" },
+  { "name": "GSAP" },
+  { "name": "Accessibility" },
+  { "name": "Cypress" },
+  { "name": "Figma" },
+  { "name": "Illustrator" },
+  { "name": "Photoshop" },
+  { "name": "Blade" },
+  { "name": "WordPress" },
+  { "name": "Vite" },
+  { "name": "BEM" },
+  { "name": "Livewire" },
+  { "name": "Tailwind" },
+  { "name": "SASS/LESS" },
+  { "name": "SVG Animation" },
+  { "name": "UX Prototyping" },
+  { "name": "Information Architecture" },
+  { "name": "SEO" }
+] %}
+
+{% if skills %}
+
+    <ul class="flex flex-wrap justify-center gap-2">
+
+        {% for skill in skills %}
+
+            <li class="bg-blue-light text-dark-blue px-2.5 py-1 rounded text-sm font-medium">{{ skill.name }}</li>
+
+        {% endfor %}
+
+    </ul>
+
+{% endif %}

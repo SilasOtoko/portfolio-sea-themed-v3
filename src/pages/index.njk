@@ -1,31 +1,97 @@
 {% extends './layouts/main.njk' %}
 
 {% set pageType = "home" %}
+{% set pageTitle = "Josiah Schaefer | Frontend Developer" %}
 
 {% block content %}
 
-    <div class="mt-auto md:mt-0 bg-blue pb-8 sm:min-h-screen">
+    <div class="hero mt-16 sm:mt-0 bg-blue pb-8 min-h-screen">
 
         {% include 'template-parts/octopus.njk' %}
 
-        <div class="text-white mt-8 sm:-mt-8 xl:-mt-32 px-8 xl:px-32">
+        <div class="text-white mt-8 md:mt-0 px-8 lg:px-16">
 
-            <p class="motion-safe:opacity-0 motion-safe:animate-slide-in-up text-3xl md:text-4xl xl:text-6xl font-bold font-serif" style="animation-delay: 500ms">Hello. I'm Josiah, <br/> and I make websites.</p>
+            <div class="lg:max-w-screen-lg 2xl:max-w-[1920px] 2xl:px-16 mx-auto">
 
-            <div class="flex flex-wrap gap-4 items-center motion-safe:opacity-0 motion-safe:animate-slide-in-left mt-6" style="animation-delay: 700ms">
+                <h1 class="motion-safe:opacity-0 motion-safe:animate-slide-in-up text-3xl md:text-4xl xl:text-6xl font-bold font-serif" style="animation-delay: 500ms">Josiah Schaefer</h1>
+                <p class="motion-safe:opacity-0 motion-safe:animate-slide-in-up font-medium md:text-xl xl:text-2xl mt-2 xl:mt-4" style="animation-delay: 800ms">Frontend developer with a UI/UX bent</p>
 
-                <a href="/portfolio.html" class="w-full sm:w-auto min-w-3xs font-semibold text-center py-4 px-8 bg-light-green rounded text-dark-blue border-2 border-light-green">
-                    See My Work
-                </a>
+                <div class="flex flex-wrap gap-4 items-center mt-8">
 
-                <a href="/about.html" class="w-full sm:w-auto min-w-3xs font-semibold text-center py-4 px-8 rounded border-2">
-                    About Me
-                </a>
+                    <a href="#portfolio" class="font-medium md:text-lg w-full sm:w-auto sm:min-w-[240px] md:min-w-3xs text-center py-2 lg:py-3 px-8 bg-light-green rounded text-dark-blue border-2 border-light-green motion-safe:opacity-0 motion-safe:animate-slide-in-left" style="animation-delay: 1300ms">
+                        See My Work
+                    </a>
+
+                    <a href="#contact" class="font-medium md:text-lg w-full sm:w-auto sm:min-w-[240px] md:min-w-3xs text-center py-2 lg:py-3 px-8 rounded border-2 motion-safe:opacity-0 motion-safe:animate-slide-in-left" style="animation-delay: 1100ms">
+                        Get in touch
+                    </a>
+
+                </div>
 
             </div>
 
         </div>
 
     </div>
+
+    <section id="portfolio" class="bg-white py-16 md:py-24 px-8 md:px-16" tabindex="-1">
+        <div class="max-w-screen-lg mx-auto">
+
+            <h2 class="text-3xl md:text-4xl xl:text-5xl font-serif font-bold text-dark-blue mb-4">My Work</h2>
+
+            {% include "template-parts/portfolio.njk" %}
+
+        </div>
+    </section>
+
+    <section id="portfolio" class="bg-white pb-16 md:pb-24">
+        <div class="max-w-screen-md mx-auto text-center">
+
+            <h2 class="text-3xl md:text-4xl xl:text-5xl font-serif font-bold text-dark-blue mb-4">Skillset</h2>
+
+            {% include "template-parts/skillset.njk" %}
+
+        </div>
+    </section>
+
+    <section id="contact" class="bg-blue-light py-16 md:py-24 px-8 scroll-mt-16">
+
+        <div class="max-w-screen-lg mx-auto text-center">
+
+            <h2 class="text-3xl md:text-4xl xl:text-5xl font-serif font-bold text-dark-blue mb-4">Get in touch</h2>
+
+            <p class="text-lg text-dark-blue mb-10 max-w-xl mx-auto leading-relaxed">
+                Open to remote frontend roles. Always happy to talk about an interesting project or a problem worth solving.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center">
+
+                <a
+                    href="mailto:josiahschaefer1@gmail.com"
+                    class="inline-flex items-center gap-3 font-medium md:text-lg py-3 px-8 bg-light-green hover:bg-light-green-hover rounded text-dark-blue border-2 border-light-green hover:border-light-green-hover transition-colors w-full sm:w-auto justify-center"
+                >
+                    <svg class="w-5 h-5 fill-current shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true">
+                        <path d="M112 128C85.5 128 64 149.5 64 176C64 191.1 71.1 205.3 83.2 214.4L291.2 370.4C308.3 383.2 331.7 383.2 348.8 370.4L556.8 214.4C568.9 205.3 576 191.1 576 176C576 149.5 554.5 128 528 128L112 128zM64 260L64 448C64 483.3 92.7 512 128 512L512 512C547.3 512 576 483.3 576 448L576 260L387.2 401.6C353 427.2 306 427.2 271.8 401.6L64 260z"/>
+                    </svg>
+                    josiahschaefer1@gmail.com
+                </a>
+
+                <a
+                    href="https://www.linkedin.com/in/josiahschaefer/"
+                    target="_blank"
+                    rel="noopener"
+                    class="inline-flex items-center gap-3 font-medium md:text-lg py-3 px-8 rounded text-dark-blue border-2 border-dark-blue hover:bg-dark-blue hover:text-white transition-colors w-full sm:w-auto justify-center"
+                >
+                    <svg class="w-5 h-5 fill-current shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" aria-hidden="true">
+                        <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/>
+                    </svg>
+                    LinkedIn
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
 
 {% endblock %}
