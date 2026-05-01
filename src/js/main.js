@@ -37,5 +37,4 @@ window.addEventListener('resize', hideHighlight);
 
 document.fonts.ready.then(function () {
   document.documentElement.classList.add('fonts-loaded');
-  console.log('All fonts have loaded!');
 });
