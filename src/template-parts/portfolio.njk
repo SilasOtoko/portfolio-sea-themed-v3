@@ -6,7 +6,8 @@
         "year": "2025",
         "link": "/work/mindscape.html",
         "image": "/img/case-studies/mindscape-mega-menu.png",
-        "alt": "Mindscape platform — Harvard Health Publishing"
+        "alt": "Mindscape platform — Harvard Health Publishing",
+        "stack": ["Laravel", "Tailwind", "Vue", "Alpine", "JavaScript"]
     },
     {
         "title": "Harvard Health Publishing",
@@ -15,7 +16,8 @@
         "year": "2020",
         "link": "/work/harvard-health-publishing.html",
         "image": "/img/case-studies/hhp-bundle-purchase.png",
-        "alt": "Harvard Health Publishing"
+        "alt": "Harvard Health Publishing",
+        "stack": ["Laravel", "Tailwind", "Vue", "Alpine", "JavaScript"]
     },
     {
         "title": "Pedcor Companies",
@@ -24,7 +26,8 @@
         "year": "2020",
         "link": "/work/pedcor-companies.html",
         "image": "/img/case-studies/pedcor-frontend-1.png",
-        "alt": "Pedcor Companies"
+        "alt": "Pedcor Companies",
+        "stack": ["WordPress", "Gutenberg", "PHP", "JavaScript"]
     },
     {
         "title": "HGC Industries",
@@ -33,9 +36,24 @@
         "year": "2022",
         "link": "/work/hgc-industries.html",
         "image": "/img/hgcindustries-world-map.jpg",
-        "alt": "HGC Industries"
+        "alt": "HGC Industries",
+        "stack": ["WordPress", "Gutenberg", "PHP", "Alpine", "JavaScript"]
     }
-] %}
+]
+%}
+{% set personalProjects = [
+    {
+        "title": "Trainer Supply Co.",
+        "client": "Personal Project",
+        "role": "Sole Developer",
+        "year": "2026",
+        "link": "/work/trainer-supply.html",
+        "image": "/img/case-studies/trainer-supply.png",
+        "alt": "Trainer Supply Co",
+        "stack": ["React", "TypeScript", "React Router", "Vite", "Unit Testing"]
+    }
+]
+%}
 
 <p class="text-lg text-dark-blue mb-12 max-w-2xl leading-relaxed">
     Selected case studies from my recent frontend work. Production sites, real clients, with the design choices and technical details that made each one its own thing.
@@ -61,6 +79,54 @@
                 <div class="p-4">
                     <h3 class="text-xl font-serif font-semibold text-dark-blue group-hover:underline group-focus:underline group-hover:text-navy group-focus:text-navy decoration-2 underline-offset-2">{{ project.title }}</h3>
                     <p class="text-sm text-blue mt-1">{{ project.client }} · {{ project.year }}</p>
+                    <ul class="flex flex-wrap gap-2 mt-2">
+
+                        {% for tech in project.stack %}
+
+                            <li class="bg-blue-gray-light text-dark-blue px-2.5 py-1 rounded text-sm font-medium">{{ tech }}</li>
+
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </a>
+        </li>
+
+    {% endfor %}
+
+</ul>
+
+<h2 class="text-3xl md:text-4xl xl:text-5xl font-serif font-bold text-dark-blue mb-4 mt-12">Personal Projects</h2>
+
+<ul class="grid gap-6 md:gap-8 sm:grid-cols-2 mt-6">
+
+    {% for project in personalProjects %}
+
+        <li>
+            <a
+                href="{{ project.link }}"
+                class="block group rounded-lg overflow-hidden bg-blue-light hover:shadow-xl focus:shadow-xl transition duration-300 border border-blue-gray-light outline-2 outline-transparent hover:outline-navy focus:outline-navy"
+            >
+                <div class="aspect-video bg-blue-gray overflow-hidden">
+                    <img
+                        src="{{ project.image }}"
+                        alt="{{ project.alt }}"
+                        class="w-full h-full object-cover group-hover:scale-110 group-focus:scale-110 transition-transform duration-200 backface-hidden"
+                        loading="lazy"
+                    />
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-serif font-semibold text-dark-blue group-hover:underline group-focus:underline group-hover:text-navy group-focus:text-navy decoration-2 underline-offset-2">{{ project.title }}</h3>
+                    <p class="text-sm text-blue mt-1">{{ project.client }} · {{ project.year }}</p>
+                    <ul class="flex flex-wrap gap-2 mt-2">
+
+                        {% for tech in project.stack %}
+
+                            <li class="bg-blue-gray-light text-dark-blue px-2.5 py-1 rounded text-sm font-medium">{{ tech }}</li>
+
+                        {% endfor %}
+
+                    </ul>
                 </div>
             </a>
         </li>
