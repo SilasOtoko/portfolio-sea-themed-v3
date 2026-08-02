@@ -1,0 +1,44 @@
+{% extends './layouts/case-study.njk' %}
+
+{% set title = "Trainer Supply Co." %}
+{% set client = "Personal Project" %}
+{% set role = "Sole Developer" %}
+{% set year = "2026" %}
+{% set stack = ["React", "TypeScript", "Firebase", "Vite", "Tailwind", "PokeAPI"] %}
+
+{% set images = [
+  {
+    "src": "/img/case-studies/trainer-supply.png",
+    "alt": "Custom Pokédex shop page showing item cards with sorting controls and add-to-cart actions"
+  }
+] %}
+
+{% block caseStudyBody %}
+
+  <p>This project started as a deliberate attempt to work with React and TypeScript in a real, full-featured application rather than a tutorial, something with enough surface area to force meaningful decisions about component architecture, state management, and data flow. I wanted to simulate an E-commerce storefront as if users were trainers in the Pokémon world. It's a full-stack Pokémon-themed storefront and Pokédex built on PokeAPI, with Firebase handling authentication, real-time data, and order persistence.</p>
+
+  <p>The app has three main areas. The Pokédex lets users browse all 151 Generation 1 Pokémon with search, multi-type filtering via a custom accessible combobox, and a detail view with stats radar chart, evolution chain, and Pokémon cry playback. The shop pulls item data from PokeAPI by category, renders product cards with sorting and filtering, and supports a full cart and checkout flow. I have future plans to add an expedition hub to tie the two together, showing the user's inventory, trainer profile, and bag contents pulled from Firebase in real time.</p>
+
+  <figure class="my-8">
+    <img
+      src="/img/case-studies/pokedex.png"
+      alt="Pokedex view showing the first couple of rows of pokemon"
+      class="w-full rounded-lg shadow-lg"
+      loading="lazy"
+    />
+    <figcaption class="mt-3 text-sm text-blue text-center italic">The Pokedex page with search and filtering functions.</figcaption>
+  </figure>
+
+  <h3 class="font-serif text-3xl">Authentication and user data</h3>
+
+  <p>Firebase Auth handles both Google sign-in and email/password. I've set it up so that when a new user authenticates for the first time, the app automatically generates a fake Pokémon-world trainer address for them and writes it to their Firebase profile. The checkout form reads this profile on mount and pre-populates the address fields.</p>
+
+  <h3 class="font-serif text-3xl">Cart and checkout architecture</h3>
+
+  <p>The cart is managed through a React context with a reducer, persisted to localStorage so it survives page refreshes. A dedicated cart page handles the empty state with upsell suggestions, and the CartDrawer acts as a lightweight summary that links through to it. The checkout page redirects to the cart if the user's cart is empty.</p>
+
+  <h3 class="font-serif text-3xl">TypeScript and component typing</h3>
+
+  <p>The project is fully typed in TypeScript. Shared types for PokeAPI responses, cart entries, orders, and Pokémon list items live in a central <code>types.ts</code> file and are imported across components. Every component that accepts props has an explicit interface.</p>
+
+{% endblock %}

@@ -11,12 +11,12 @@
         <button
             class="h-20 w-20 md:h-40 md:w-40"
             x-bind:class="{
-                'animate-turn' : navOpen,
-                'animate-turn-reverse' : !navOpen && triggered
+                'animate-turn-reverse' : navOpen,
+                'animate-turn' : !navOpen && triggered
             }"
             x-on:click="navOpen = !navOpen; triggered = true"
         >
-            <img src="/svgs/helm.svg" alt="" role="presentation" />
+            <img src="/svgs/helm-v2.svg" alt="" role="presentation" />
         </button>
 
     </div>
