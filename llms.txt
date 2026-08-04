@@ -1,0 +1,122 @@
+# Josiah Schaefer — Frontend Developer
+# Full content index for AI agents and LLM crawlers
+# Source: https://josiahschaefer.com
+
+---
+
+## About Josiah Schaefer
+
+Josiah Schaefer is a frontend developer with a UI/UX bent based near Indianapolis, Indiana. He has 12 years of experience in web development, preceded by a background in Psychology and a couple of years working in the social field. He specialises in translating designer intent into high-quality frontend code, with particular strengths in interaction design, accessibility, animation, and building scalable component systems that empower non-technical collaborators.
+
+He is open to remote frontend roles and available for freelance inquiries.
+
+Email: josiahschaefer1@gmail.com
+LinkedIn: https://www.linkedin.com/in/josiahschaefer/
+
+Skills: JavaScript · PHP · Laravel · Alpine.js · GSAP · Accessibility · Cypress · Figma · Illustrator · Photoshop · Blade · WordPress · Vite · BEM · Livewire · Tailwind · SASS/LESS · SVG Animation · UX Prototyping · Information Architecture · SEO · React · TypeScript · Vue · Firebase
+
+---
+
+## Case study: Mindscape
+URL: https://josiahschaefer.com/work/mindscape
+Client: Harvard Health Publishing
+Year: 2025
+Role: Sole Front-End Developer
+Stack: Laravel, Tailwind, Alpine
+
+### Description
+Mindscape is a Harvard Health Publishing platform focused on adolescent mental health, made distinctive through custom illustrations from a local artist. The goal was to make the designer's personality and the illustrations come to life, and to bring a sense of calm and brightness to the user when engaging with difficult content. The site relied on soft tones and considered typography to make the content feel calm rather than clinical. Most of the frontend craft sat in small details — interaction quality, type rhythm, and how pages breathed through use of white space.
+
+### Mobile illustration slider
+The hero illustration was wide, and at mobile sizes it would have shrunk to the point of losing the detail that made it worth using. Rather than crop the image, Josiah proposed adding a styled range slider input that users can grab and drag to scroll the illustration horizontally. This solved two problems: it keeps the artwork legible at scale and signals to the user that the image deliberately extends beyond the viewport.
+
+### Mega menu
+The mega menu required close collaboration with the designer on both information architecture and visual treatment across breakpoints. One key piece of client feedback was that too much appeared at once when the menu opened. Josiah solved this by animating the left column in first (containing the main pages), with the remaining columns following a moment later — reflecting the hierarchy of the pages and helping users know where to look first. The mega menu is also fully keyboard-navigable using arrow keys.
+
+### Card carousel
+The card carousel was built from scratch using Alpine, Tailwind, and Intersection Observer. Key challenges included aligning cards with the site's max-width container while allowing overflow visibility on both sides, and showing navigation controls only when cards actually overflow the container — both on initial load and when the screen is resized.
+
+---
+
+## Case study: Harvard Health Publishing
+URL: https://josiahschaefer.com/work/harvard-health-publishing
+Client: Harvard Health Publishing
+Year: 2020
+Role: Main Front-End Developer
+Stack: Laravel, Tailwind, Vue, Alpine
+
+### Description
+Harvard Health Publishing is an editorial publishing site at scale — hundreds of articles, dozens of landing pages, and a designer who could not reasonably draw every screen. As the main frontend developer on the 2020 redesign, Josiah's role was as much filling in the design where it didn't yet exist as it was implementing it.
+
+### Templating consolidation
+The site had accumulated a sprawl of one-off landing pages, each with its own HTML and CSS, much of it duplicated. Every accessibility or responsive fix had to be made multiple times in slightly different ways. Josiah rebuilt the system around roughly eighteen shared templates covering the patterns the design actually needed, then trained the designer to author new landing pages by editing a PHP content object — structured fields instead of copied markup. He documented every template in a spreadsheet mapping templates to the pages that used them. The result was that adding a new landing page became a content task rather than a development task, and accessibility and responsive fixes only needed to happen once.
+
+### Bundle-purchase page
+Josiah built a new bundle-purchase page for the Special Health Reports — a page type that let users select and combine multiple products in a single transaction, which the site hadn't previously supported. He worked out the interaction details the design hadn't yet described: how format selection should behave when a user changed their mind, how to communicate which format had been added to the cart, how the order form should react as items moved in and out, and how the tiered-discount display should respond to cart contents.
+
+### Accessibility
+Josiah pushed for proper accessibility on the build before the company was treating it as a priority. When Harvard's accessibility requirements later ramped up significantly, much of the groundwork was already in place.
+
+### Testing
+Harvard Health Publishing was the first project where Josiah introduced E2E testing using Cypress to cover crucial parts of the site and protect against regressions. The initial suite covered 42 passing tests across accessibility, search, and other critical features.
+
+---
+
+## Case study: Pedcor Companies
+URL: https://josiahschaefer.com/work/pedcor-companies
+Client: Pedcor Companies
+Year: 2020
+Role: Front-End Developer
+Stack: WordPress, Gutenberg, PHP, JavaScript
+
+### Description
+Pedcor Companies was built during the early days of Gutenberg, when WordPress's block editor was still finding its footing. As the frontend developer on the build, Josiah had to translate static designs into a system of templates and blocks that worked inside a dynamic editor — flexible enough for content authors to rearrange, swap, and recompose pages without breaking the design.
+
+### Empowering non-developers
+The company had historically relied on developers for all site edits. With content still in active development during the build — copy changing, sections being added, page structures shifting — Josiah trained Pedcor's designer and copywriter to work directly in Gutenberg: how the editor was set up, which blocks did what, where constraints existed, and where they had room to move. This allowed them to ship content changes themselves without routing everything through a developer.
+
+### Translating designs into flexible blocks
+Static designs are forgiving — they show one arrangement of one set of content. A design that has to survive a content team rearranging it requires thinking through every variant ahead of time: what happens when a column has more text, when a block sits next to a different one, when a heading is missing. Josiah worked through those edge cases block by block until the system held under the editor's flexibility.
+
+---
+
+## Case study: HGC Industries
+URL: https://josiahschaefer.com/work/hgc-industries
+Client: HGC Industries
+Year: 2022
+Role: Front-End Developer (Sole Developer)
+Stack: WordPress, Gutenberg, CSS, JavaScript, SVG
+
+### Description
+HGC Industries' site was built around a specific designer vision: a single line animation drawn down the left edge of the page that would unspool as the user scrolled, with secondary animations appearing to spring from it as related sections came into view. The line was the visual spine of the site and the rest of the animations extended from it. Josiah owned both the build and the animation choreography as sole developer.
+
+### Animation system
+The system was built using CSS, JavaScript with the Intersection Observer API, and inline SVGs. The spine line drove secondary animations whose stroke paths animated as sections entered the viewport. The hardest challenge was making the main line draw starting horizontally and then changing direction to go vertically — an SVG alone didn't scale well, so Josiah developed a combination of techniques to give the impression of a single continuous drawing action. The animation draw speed also had to account for the page being of variable height.
+
+---
+
+## Personal project: Trainer Supply Co.
+URL: https://josiahschaefer.com/work/trainer-supply
+Live site: https://trainersupplyco.netlify.app
+Year: 2026
+Role: Sole Developer
+Stack: React, TypeScript, Firebase, Vite, Tailwind, PokeAPI
+
+### Description
+A deliberate exercise in building a full-featured React and TypeScript application with enough surface area to force meaningful decisions about component architecture, state management, and data flow. The project simulates an e-commerce storefront set in the Pokémon world, built on PokeAPI with Firebase handling authentication, real-time data, and order persistence.
+
+### Features
+The app has three main areas. The Pokédex lets users browse all 151 Generation 1 Pokémon with search, multi-type filtering via a custom accessible combobox, and a detail view with a stats radar chart, evolution chain, and Pokémon cry playback. The shop pulls item data from PokeAPI by category and supports a full cart and checkout flow. Future plans include an expedition hub showing the user's inventory and trainer profile from Firebase in real time.
+
+### Architecture highlights
+Cart state is managed through a React context with a reducer, persisted to localStorage. Firebase Auth handles Google sign-in and email/password. On first authentication, the app auto-generates a Pokémon-world trainer address and writes it to the user's Firebase profile, pre-populating the checkout form on mount. The project is fully typed in TypeScript with shared types for PokeAPI responses, cart entries, orders, and Pokémon list items living in a central types.ts file.
+
+---
+
+## Pages
+
+### Home (/)
+Introduction with sea/maritime aesthetic, work index with case study cards, skills list, and contact section.
+
+### About (/about)
+Personal background — 12 years in web development, Psychology degree, based near Indianapolis, father of five.
