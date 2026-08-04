@@ -51,7 +51,7 @@
 
     --animate-turn: turn 1s ease-in-out 1;
     --animate-turn-reverse: turnReverse 1s ease-in-out 1;
-    --animate-head-move: 3s ease-in 1s headMove forwards;
+    --animate-head-move: 3s ease-in headMove forwards;
     --animate-leg-swing-1: 8s legSwingOne 4s infinite;
     --animate-leg-swing-4: 10s legMove 5s infinite;
     --animate-slide-in-left: 0.7s slideInLeft forwards;
